@@ -39,14 +39,14 @@ namespace Autosharing.Controllers
 
 			foreach (var sharingRule in sharingRules)
 			{
-				var entitys = GetEntitysByRule(sharingRule);
+				var entities = GetEntitiesByRule(sharingRule);
 
 				if (entityId.HasValue)
 				{
-					entitys = entitys.Where(o => o.Id == entityId.Value);
+					entities = entities.Where(o => o.Id == entityId.Value);
 				}
 
-				permissions.AddRange(entitys.Select(o => new PermissionDto
+				permissions.AddRange(entities.Select(o => new PermissionDto
 				{
 					EntityId = o.Id,
 					UserId = userId,
@@ -67,10 +67,10 @@ namespace Autosharing.Controllers
 			}
 		}
 
-		private IEnumerable<Entity> GetEntitysByRule(SharingRule sharingRule)
+		private IEnumerable<Entity> GetEntitiesByRule(SharingRule sharingRule)
 		{
 			var db = new AutosharingDbContext();
-			IEnumerable<Entity> query = db.Entitys.Include(o => o.Properties);
+			IEnumerable<Entity> query = db.Entities.Include(o => o.Properties);
 
 			foreach (var filter in sharingRule.Filters)
 			{

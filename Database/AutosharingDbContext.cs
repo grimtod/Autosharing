@@ -19,7 +19,7 @@ namespace Autosharing.Database
 
 		public DbSet<Membership> Memberships { get; set; }
 
-		public DbSet<Entity> Entitys { get; set; }
+		public DbSet<Entity> Entities { get; set; }
 
 		public DbSet<EntityProperty> EntityProperties { get; set; }
 
