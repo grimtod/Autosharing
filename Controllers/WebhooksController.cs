@@ -28,7 +28,7 @@ namespace Autosharing.Controllers
 			var entityDto = GetEntityFromService(entityId);
 			var @entity = ConvertToModel(entityDto);
 			var db = new AutosharingDbContext();
-			db.Entitys.Add(@entity);
+			db.Entities.Add(@entity);
 			db.SaveChanges();
 		}
 
@@ -38,7 +38,7 @@ namespace Autosharing.Controllers
 			var entityDto = GetEntityFromService(entityId);
 			var @entity = ConvertToModel(entityDto);
 			var db = new AutosharingDbContext();
-			@entity = db.Entitys.Attach(@entity);
+			@entity = db.Entities.Attach(@entity);
 			db.Entry(@entity).State = EntityState.Modified;
 			db.SaveChanges();
 		}
@@ -47,8 +47,8 @@ namespace Autosharing.Controllers
 		public void EntityDeleted([FromQuery]Guid entityId)
 		{
 			var db = new AutosharingDbContext();
-			var @entity = db.Entitys.Find(entityId);
-			db.Entitys.Remove(@entity);
+			var @entity = db.Entities.Find(entityId);
+			db.Entities.Remove(@entity);
 			db.SaveChanges();
 		}
 

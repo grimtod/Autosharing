@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Autosharing.Models
 {
-	[Table("Entitys")]
+	[Table("Entities")]
 	public class Entity
 	{
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
